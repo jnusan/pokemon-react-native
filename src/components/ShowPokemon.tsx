@@ -25,9 +25,9 @@ export const ShowPokemon = ({pokemon, position}) => {
     return string.charAt(0).toUpperCase() + string.slice(1);
   };
 
-  useEffect(() => {
+  useEffect(() =>{
     getAttacks();
-  }, []);
+  }, [pokemon.moves])
 
   const getAttacks = async () => {
     const movesPokemon = [];
@@ -44,8 +44,6 @@ export const ShowPokemon = ({pokemon, position}) => {
   };
 
   const attackOponent = (attack) => {
-    console.log('attack!');
-    console.log(attack);
     if (position === 1) {
       setPokemon2Data({
         ...pokemon2Data,

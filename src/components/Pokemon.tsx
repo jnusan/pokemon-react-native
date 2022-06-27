@@ -1,9 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { Button, SafeAreaView, ScrollView, StyleSheet, Text, View } from 'react-native';
-import {Picker} from '@react-native-picker/picker';
 
-import { usePokemon } from '../hooks/usePokemon';
-import { IPokemon } from '../interfaces/reqResPokemon';
 import { PokemonContext } from '../context/PokemonContext'
 import { SelectPokemon } from './SelectPokemon';
 import { ShowPokemon } from './ShowPokemon';
@@ -15,7 +12,7 @@ export const Pokemon = () => {
 
   const startBattle = async () => {
     if(pokemon1 && pokemon2) {
-      getPokemonInfo();
+      await getPokemonInfo();
     }
   }
 
@@ -33,7 +30,7 @@ export const Pokemon = () => {
     setLoadingPokemonInfo(true);
     const resp1 = await axios.get(pokemon1.url);
     const resp2 = await axios.get(pokemon2.url);
-    setPokemon1Data( getPokemonData(resp1.data));
+    setPokemon1Data(getPokemonData(resp1.data));
     setPokemon2Data(getPokemonData(resp2.data));
     setLoadingPokemonInfo(false);
   }
