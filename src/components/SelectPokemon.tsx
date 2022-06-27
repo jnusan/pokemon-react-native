@@ -24,6 +24,11 @@ export const SelectPokemon: React.FC<Props> = ({ pokemonPos }) => {
       break;
     }
   }
+
+  const capitalizar = (string: string) => {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  };
+
   return (
     <>
       <Picker
@@ -34,7 +39,7 @@ export const SelectPokemon: React.FC<Props> = ({ pokemonPos }) => {
         <Picker.Item label={`Select Pokemon ${pokemonPos}`} value="" />
         {
           pokemon.map((x, index) => 
-            <Picker.Item key={index} label={x.name} value={index} />
+            <Picker.Item key={index} label={capitalizar(x.name)} value={index} />
           )
         }
       </Picker>
